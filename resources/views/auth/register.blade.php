@@ -37,16 +37,7 @@
                             name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-        <div>
-            <label for="role">Pilih Role:</label>
-            <select name="role" id="role" required>
-                <option value="admin">level 1</option>
-                <option value="admin">level 2</option>
-                <option value="admin">level 3</option>
-                <option value="user">level 4</option>
-            </select>
-        </div>
+            </div>
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
