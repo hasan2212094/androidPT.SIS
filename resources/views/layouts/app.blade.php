@@ -19,12 +19,15 @@
             @include('layouts.navigation')
 
             <!-- Page Heading -->
-            @if (isset($header))
+            {{-- @if (isset($header))
                 <header class="bg-white shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
+            @endif --}}
+            @if(auth()->check() && auth()->user()->role === 'admin')
+               <a href="{{ url('/admin/dashboard') }}">Admin Dashboard</a>
             @endif
 
             <!-- Page Content -->
