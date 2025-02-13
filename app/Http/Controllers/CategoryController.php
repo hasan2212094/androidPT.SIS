@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -11,15 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return response()->json(Category::all(), 200);
     }
 
     /**
@@ -27,7 +20,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = Category::create($request->all());
+        return response()->json($post, 201);
     }
 
     /**
@@ -35,15 +29,7 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        return response()->json(Category::findOrFail($id), 200);
     }
 
     /**
@@ -51,7 +37,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $post = Category::findOrFail($id);
+        $post->update($request->all());
+        return response()->json($post, 200);
     }
 
     /**
@@ -59,6 +47,7 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Category::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }
